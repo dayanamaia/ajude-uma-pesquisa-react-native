@@ -50,4 +50,4 @@ npm start
 Rodar o aplicativo
 
 - Baixe o app Expo Client [IOS App](https://apps.apple.com/app/apple-store/id982107779), [Android App](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www);
-- No terminal, após o start do projeto, irá aparecer um QRCode, scanerar utilizando aplicativo Expo.
+- No terminal, após o start do projeto, irá aparecer um QRCode, scanerar utilizando o aplicativo Expo Client.
