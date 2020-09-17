@@ -6,6 +6,8 @@ import { useFonts } from 'expo-font';
 import { Catamaran_400Regular , Catamaran_500Medium } from '@expo-google-fonts/catamaran';
 import { Montserrat_700Bold, Montserrat_800ExtraBold } from '@expo-google-fonts/montserrat';
 
+import Onboarding from './src/views/Onboarding/index';
+
 export default function App() {
   let [fontsLoaded] = useFonts({
     Catamaran_400Regular,
@@ -19,6 +21,7 @@ export default function App() {
   } else {
     return (
       <>
+        <Onboarding />
         <StatusBar style="auto" />
       </>
     );
