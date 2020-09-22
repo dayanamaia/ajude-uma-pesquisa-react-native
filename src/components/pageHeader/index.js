@@ -5,6 +5,7 @@ import { BorderlessButton } from 'react-native-gesture-handler';
 import arowleftLight from './../../assets/images/arrow-left-light-icon.png';
 import arowleftDark from './../../assets/images/arrow-left-dark-icon.png';
 import menuIcon from './../../assets/images/menu-icon.png';
+import menuIconLight from './../../assets/images/menu-icon-bg-light.png';
 import styles from './styles.js';
 
 const PageHeader = (props) => {
@@ -28,7 +29,12 @@ const PageHeader = (props) => {
                 </View>
                 <View style={styles.menu_btn}>
                     <BorderlessButton>
+                    {bg && bg === 'dark' &&
+                        <Image source={menuIconLight} resizeMode='contain' />
+                    }
+                    {!bg &&
                         <Image source={menuIcon} resizeMode='contain' />
+                    }
                     </BorderlessButton>
                 </View>
             </View>
