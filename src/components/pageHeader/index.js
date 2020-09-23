@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 import arowleftLight from './../../assets/images/arrow-left-light-icon.png';
 import arowleftDark from './../../assets/images/arrow-left-dark-icon.png';
@@ -10,13 +11,18 @@ import styles from './styles.js';
 
 const PageHeader = (props) => {
     const { title, btnBack, bg } = props;
+    const navigation = useNavigation();
+
+    const goBack = () => {
+        navigation.goBack();
+    }
 
     return(
         <View style={styles.container}>
             <View style={styles.topBar}>
                 <View style={styles.info_nav}>
                     {btnBack &&
-                        <BorderlessButton style={styles.btn_back}>
+                        <BorderlessButton style={styles.btn_back} onPress={goBack}>
                             {bg && bg === 'dark' &&
                                 <Image source={arowleftLight} resizeMode='contain' />
                             }
