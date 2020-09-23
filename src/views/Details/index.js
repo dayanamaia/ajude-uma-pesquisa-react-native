@@ -11,21 +11,8 @@ import styles from './styles';
 import api from '../../services/api';
 
 const Details = () => {
-    const dataCard = {
-        title: 'Nome da pesquisa a valorização de fatores subjetivos verifica a validade da sensibilia dos não-sentidos.',
-        instituicao: 'Instituto Butantan',
-        logoInstituicao: 'logo-instituicao.png',
-        description: [
-            {
-                text: 'Pignut hamburg parsley tigernut. Carrot burdock scorzonera chaya samphire corn salad prussian asparagus, lettuce, bitterleaf. Indian pea orache ginger potato brussels sprout paracress tinda — potato collard greens; urad bean. Jujubes tart wafer cheesecake chocolate chocolate candy canes cotton candy. Cotton candy toffee dessert chocolate. Cookie jelly toffee gummi bears halvah croissant apple pie cupcake.',
-            },
-            {
-                text: 'Powder sugar plum cotton candy muffin.Pignut hamburg parsley tigernut. Carrot burdock scorzonera chaya samphire corn salad prussian asparagus, lettuce, bitterleaf. Indian pea orache ginger potato brussels sprout paracress tinda — potato collard greens; urad bean.',
-            },
-        ]
-    }
 
-    const [data, setData] = useState({...dataCard});
+    const [data, setData] = useState({});
 
     const getData = () => {
         api.get(`posts/1`).then(response => {
@@ -35,7 +22,7 @@ const Details = () => {
 
     useEffect(() => {
         getData();
-    }, {})
+    }, {});
 
     return(
         <>
