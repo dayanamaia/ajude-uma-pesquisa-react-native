@@ -11,6 +11,7 @@
     "@expo-google-fonts/catamaran": "^0.1.0",
     "@expo-google-fonts/montserrat": "^0.1.0",
     "@react-navigation/native": "^5.7.3",
+    "axios": "^0.20.0",
     "expo": "~38.0.8",
     "expo-font": "~8.2.1",
     "expo-status-bar": "^1.0.2",

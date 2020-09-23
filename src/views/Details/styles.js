@@ -41,6 +41,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
+        flex: 1,
+    },
+    detailContentScroll: {
         padding: 20,
         flex: 1,
     },
@@ -48,7 +51,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Catamaran_500Medium',
         fontSize: 16,
         color: '#32264D',
-    }
+    },
 });
 
 export default styles;

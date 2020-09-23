@@ -1,4 +1,4 @@
-import React, { useState } from  'react';
+import React, { useState, useEffect } from  'react';
 import { Image, Text, View, ScrollView } from 'react-native';
 
 import PageHeader from '../../components/pageHeader';
@@ -7,6 +7,8 @@ import shareIcon from './../../assets/images/whatsap-light-icon.png';
 import whatsapIcon from './../../assets/images/whatsap-light-icon.png';
 import mapIcon from './../../assets/images/map-light-icon.png';
 import styles from './styles';
+
+import api from '../../services/api';
 
 const Details = () => {
     const dataCard = {
@@ -23,32 +25,47 @@ const Details = () => {
         ]
     }
 
-    const [data, useData] = useState({ ...dataCard});
+    const [data, setData] = useState({...dataCard});
+
+    const getData = () => {
+        api.get(`posts/1`).then(response => {
+            setData(response.data);
+        });
+    }
+
+    useEffect(() => {
+        getData();
+    }, {})
 
     return(
-        <View style={styles.container}>
-            <PageHeader btnBack={true} bg='dark' />
-            <View style={styles.detailHeader}>
-                <Text style={styles.title}>{data.title}</Text>
-                <View style={styles.controls}>
-                    <View style={styles.controlsItens}>
-                        <Image source={logo} resizeMode="contain" />
-                        <Text style={styles.infoSmall}>{data.instituicao}</Text>
+        <>
+            {data.title &&
+                <View style={styles.container}>
+                    <PageHeader btnBack={true} bg='dark' />
+                    <View style={styles.detailHeader}>
+                        <Text style={styles.title}>{data.title}</Text>
+                        <View style={styles.controls}>
+                            <View style={styles.controlsItens}>
+                                <Image source={logo} resizeMode="contain" />
+                                <Text style={styles.infoSmall}>Instituição Butantan</Text>
+                            </View>
+                            <View style={styles.controlsItens}>
+                                <Image source={whatsapIcon} resizeMode="contain" style={styles.controlsItensIcon} />
+                                <Image source={mapIcon} resizeMode="contain" style={styles.controlsItensIcon} />
+                                <Image source={shareIcon} resizeMode="contain" style={styles.controlsItensIcon} />
+                            </View>
+                        </View>
                     </View>
-                    <View style={styles.controlsItens}>
-                        <Image source={whatsapIcon} resizeMode="contain" style={styles.controlsItensIcon} />
-                        <Image source={mapIcon} resizeMode="contain" style={styles.controlsItensIcon} />
-                        <Image source={shareIcon} resizeMode="contain" style={styles.controlsItensIcon} />
+                    <View style={styles.detailContent}>
+                        <ScrollView style={styles.detailContentScroll}>
+                            <View>
+                                <Text style={styles.textContent}>{data.body}</Text>
+                            </View>
+                        </ScrollView>
                     </View>
                 </View>
-            </View>
-            <ScrollView style={styles.detailContent}>
-                <Text style={styles.textContent}>{data.description[0].text}</Text>
-                <Text style={styles.textContent}>{data.description[1].text}</Text>
-                <Text style={styles.textContent}>{data.description[1].text}</Text>
-                <Text style={styles.textContent}>{data.description[1].text}</Text>
-            </ScrollView>
-        </View>
+            }
+        </>
     );
 }
 
