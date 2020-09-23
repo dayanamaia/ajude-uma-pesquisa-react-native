@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
+
 import Card from '../../components/Card';
 import PageHeader from '../../components/pageHeader';
 import Search from '../../components/Search';
@@ -22,17 +23,20 @@ const Home = () => {
     }
     
     useEffect(() => {
-        getData();
+        api.get(`posts`).then(response => {
+            setDataCard(response.data);
+        });
     }, []);
 
     return(
         <>
-            <PageHeader title='Pesquisas Clínicas' />
-            {dataCard.length > 0 && 
-                <>
-                    <Search getTextSearch={getTextSearch} />
-                    <ScrollView style={styles.containerBg}>
-                        {dataCard.map(data => (
+            <View style={styles.container}>
+                <PageHeader title='Pesquisas Clínicas' />
+                <Search getTextSearch={getTextSearch} />
+                {dataCard.length > 0 && 
+                    <>
+                        <ScrollView style={styles.containerBg}>
+                            {dataCard.map(data => (
                                 <Card
                                 key={data.id} 
                                 titulo={data.title}
@@ -42,10 +46,11 @@ const Home = () => {
                                 local={'São Paulo'}
                                 contato={'55+ 11 973000000'}
                                 categorias={[]} />
-                        ))}
-                    </ScrollView>
-                </>
-            }
+                            ))}
+                        </ScrollView>
+                    </>
+                }
+            </View>
         </>
     );
 }

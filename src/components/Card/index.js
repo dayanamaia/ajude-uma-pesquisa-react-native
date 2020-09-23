@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles';
 import linkIcon from '../../assets/images/link-icon.png';
@@ -10,6 +11,11 @@ import whatsapIcon from '../../assets/images/whatsap-icon.png';
 
 const Card = (props) => {
     const { titulo, id, instituicao, local, anoFinal, contato, categorias } = props;
+    const navigation = useNavigation();
+
+    const handleNavigateToDetails = (id) => {
+        navigation.navigate('Details', {idItem: id});
+    }
 
     return(
         <View style={styles.container}>
@@ -20,7 +26,7 @@ const Card = (props) => {
                         <View style={[styles.tag, styles.tagReabilitacao]}></View>
                         <View style={[styles.tag, styles.tagQuestionario]}></View>
                     </View>
-                    <BorderlessButton>
+                    <BorderlessButton onPress={() => handleNavigateToDetails(id)}>
                         <Image source={linkIcon} resizeMode='contain' />
                     </BorderlessButton>
                 </View>

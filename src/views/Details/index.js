@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from  'react';
 import { Image, Text, View, ScrollView } from 'react-native';
+import { useRoute } from '@react-navigation/native';
 
 import PageHeader from '../../components/pageHeader';
 import logo from './../../assets/images/logo-instituicao.png';
@@ -13,16 +14,18 @@ import api from '../../services/api';
 const Details = () => {
 
     const [data, setData] = useState({});
+    const route = useRoute();
+    const routeParams = route.params;
 
     const getData = () => {
-        api.get(`posts/1`).then(response => {
+        api.get(`posts/${routeParams.idItem}`).then(response => {
             setData(response.data);
         });
     }
 
     useEffect(() => {
         getData();
-    }, {});
+    }, []);
 
     return(
         <>
