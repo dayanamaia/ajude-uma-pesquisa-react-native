@@ -31,7 +31,7 @@ const Card = (props) => {
                     </BorderlessButton>
                 </View>
                 <View style={styles.infoBody}>
-                    <BorderlessButton>
+                    <BorderlessButton onPress={() => handleNavigateToDetails(id)}>
                         <Text style={styles.title}>{titulo}</Text>
                     </BorderlessButton>
                     <View style={styles.infoCard}>
