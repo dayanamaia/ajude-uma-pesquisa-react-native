@@ -9,7 +9,7 @@ import whatsapIcon from '../../assets/images/whatsap-icon.png';
 
 
 const Card = (props) => {
-    const { titulo, id, instituicao, local, anoFinal, contatos, categorias } = props;
+    const { titulo, id, instituicao, local, anoFinal, contato, categorias } = props;
 
     return(
         <View style={styles.container}>
@@ -42,7 +42,6 @@ const Card = (props) => {
                     <BorderlessButton style={[styles.infoBox]}>
                         <Image source={whatsapIcon} resizeMode='contain' style={styles.infoBoxIcon} />
                         <Text style={styles.infoBoxCall}>entrar em contato</Text>
-                        {/* <Text style={styles.infoBoxCall}>{contatos}</Text> */}
                     </BorderlessButton>
                 </View>
             </View>

@@ -7,6 +7,7 @@ import { Catamaran_400Regular , Catamaran_500Medium } from '@expo-google-fonts/c
 import { Montserrat_700Bold, Montserrat_800ExtraBold } from '@expo-google-fonts/montserrat';
 
 import Details from './src/views/Details/index';
+import Home from './src/views/Home';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -21,7 +22,7 @@ export default function App() {
   } else {
     return (
       <>
-        <Details />
+        <Home />
         <StatusBar style="auto" />
       </>
     );

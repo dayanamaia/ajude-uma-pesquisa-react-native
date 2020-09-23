@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         borderRadius: 10,
         paddingTop: 20,
+        marginBottom: 30,
     },
     infoHeader: {
         paddingLeft: 20,
